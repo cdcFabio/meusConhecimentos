@@ -1,7 +1,7 @@
 import { Box,  makeStyles,  TextField } from "@material-ui/core";
 import React, { useContext } from "react";
 import PadraoCores from "../context/ContextoPadroes";
-import ReactHtmlParser from 'react-html-parser';
+import ReactHtmlParser from "../../node_modules/html-react-parser";
 
 
 const useStyles = makeStyles ((theme) => ({
@@ -22,8 +22,9 @@ export const ExibeTexto = ({ conteudo }) => {
    let indice = 0;
     if (tratado.includes("http",indice)) {
         let reg = /http\S:\S*/gi;
+        let replace = ' <a target="_blank" rel="noreferrer noopener" href="'+'$&'+'">'+'$&'+'</a> ';
         
-        tratado = ReactHtmlParser(conteudo.replace(reg,' <a target="_blank" rel="noreferrer noopener" href="'+'$&'+'">'+'$&'+'</a> '));
+        tratado = ReactHtmlParser(conteudo.replace(reg,replace));
 
 
     } 
