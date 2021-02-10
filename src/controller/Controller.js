@@ -49,11 +49,26 @@ const RemoveMateria = (materia) => {
 
 }
 
+const ExportaDados = ()=> {
+
+    return new Promise((resolve,reject) =>{
+        dao.AcessaBanco(store,versao,nomeBanco)
+        .then(conexao => dao.Exporta(conexao))
+        .then(result => resolve(result))
+        .catch(erro => {
+            console.log(erro);
+             throw new Error('Erro ao acessar o banco')
+        })
+
+    })
+}
 
 const controle =  {
     AdicionaMateria, 
     CarregaDoBanco,
     AlteraMateria, 
-    RemoveMateria} 
+    RemoveMateria,
+    ExportaDados
+} 
 
 export default controle

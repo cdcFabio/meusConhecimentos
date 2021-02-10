@@ -87,6 +87,25 @@ const Carrega = (conexao) => {
     })
 }
 
+const Exporta = (conexao) => {
+    return new Promise((resolve,reject)=>{
+
+        let resultado;
+
+        let requisicao = conexao.getAll();
+
+        requisicao.onsuccess = e => {
+
+            resolve(e.target.result)
+        }
+
+        requisicao.onerror = e => {
+            console.log(e.target.error);
+            reject("Não foi possivel obter o coneteudo")
+        }
+    })
+}
+
 const Altera = (conexao, conteudo) => {
    
     return new Promise((resolve,reject) => {
@@ -123,6 +142,6 @@ const Remove = (conexao, id) => {
 }
 
 
-const dao = { Adiciona, AcessaBanco, Carrega, Altera, Remove}
+const dao = { Adiciona, AcessaBanco, Carrega, Altera, Remove, Exporta}
 
 export default dao

@@ -1,4 +1,4 @@
-import { Accordion,   Box, Button, Fab, Fade, makeStyles, Modal, Typography, withStyles } from '@material-ui/core';
+import { Accordion,   Box, Button, Fab,  makeStyles, Modal, Typography, withStyles } from '@material-ui/core';
 import React, {  useEffect, useRef, useState } from 'react';
 import CardEstudos from './CardEstudos';
 import EntradaTexto from './EntradaTexto';
@@ -38,10 +38,20 @@ const AccordionDetails = withStyles((theme) => ({
   }))(MuiAccordionDetails);
 
 const useStyles = makeStyles((theme) => ({
+    modal : {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+     
+   //   width: '50%',
+     
+      
+      height: 'auto',
+    },
     paper: {
-      position: 'relative',
-      top:'10%',
-      left:'25%',
+     // position: 'relative',
+     // top:'10%',
+     // left:'25%',
       width: '50%',
       height: '80%',
       backgroundColor: theme.palette.background.paper,
@@ -67,6 +77,10 @@ useEffect(()=>{
   setExpanded(atual);
 },[atual])
 
+/* useEffect(()=>{
+
+  console.log("Mural Renderizado");
+}) */
 
 const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false); 
@@ -187,17 +201,18 @@ const campoCategoria = (categoria) =>{
            }): <>Nada a carregar</> }
     
     <Modal
+      className={classes.modal}
       open={modalAberto}
       onClose={_handleFechamento}
       aria-labelledby="titulo-modal"
       aria-describedby="descricao-modal"
       
     >
-      <Fade in={modalAberto}>
-        <div className={classes.paper}>
+     
+        <div  className={classes.paper}>
           <ExibeTexto conteudo={abertoModal.current}/>
         </div>
-      </Fade>
+     
 
     </Modal>
 

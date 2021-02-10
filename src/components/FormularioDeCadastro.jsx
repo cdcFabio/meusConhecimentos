@@ -1,4 +1,4 @@
-import { Box, Button, Fade, makeStyles, Paper, Popper, Typography } from "@material-ui/core";
+import { Box, Button, makeStyles, Paper, Popper, Typography } from "@material-ui/core";
 import React, { useContext, useRef, useState } from "react";
 import EntradaTexto from "./EntradaTexto";
 import SelecaoCategorias from "./SelecaoCategorias";
